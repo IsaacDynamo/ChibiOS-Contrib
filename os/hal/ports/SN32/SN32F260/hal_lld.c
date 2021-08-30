@@ -50,30 +50,13 @@
 /*===========================================================================*/
 
 /**
- * @brief   SN32F260 clocks and PLL initialization.
- * @note    All the involved constants come from the file @p board.h.
- * @note    This function should be invoked just after the system reset.
- *
- * @special
- */
-void sn32_clock_init(void) {
-
-}
-
-void SystemInit(void) {
-}
-
-void SystemCoreClockUpdate(void) {
-}
-
-/**
  * @brief   Low level HAL driver initialization.
  *
  * @notapi
  */
 void hal_lld_init(void) {
-  SystemInit();
-  SystemCoreClockUpdate();
+    SystemInit();
+    SystemCoreClockUpdate();
 }
 
 /** @} */

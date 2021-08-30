@@ -15,10 +15,10 @@
 */
 
 /**
- * @file    SN32F24x/cmparams.h
+ * @file    SN32F26x/cmparams.h
  * @brief   ARM Cortex-M0 parameters for the SN32F24x.
  *
- * @defgroup ARMCMx_SN32F24x SN32F24x Specific Parameters
+ * @defgroup ARMCMx_SN32F26x SN32F26x Specific Parameters
  * @ingroup ARMCMx_SPECIFIC
  * @details This file contains the Cortex-M0 specific parameters for the
  *          SN32F24x platform.

@@ -15,7 +15,7 @@
 */
 
 /*
- * SN32F240B memory setup.
+ * SN32F260 memory setup.
  * 0x200 entry point bootloader
  */
 MEMORY
@@ -84,3 +84,14 @@ REGION_ALIAS("HEAP_RAM", ram0);
 
 /* Generic rules inclusion.*/
 INCLUDE rules.ld
+
+/* Place magic value a the end of flash.*/
+_flag_start = 0x77FC;
+
+SECTIONS
+{
+    .flag _flag_start :
+    {
+        KEEP(*(.flag)) ;
+    } > flash0
+}

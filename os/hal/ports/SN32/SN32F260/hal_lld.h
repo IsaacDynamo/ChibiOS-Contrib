@@ -29,13 +29,13 @@
 /* Driver constants.                                                         */
 /*===========================================================================*/
 
-// #include "sn32_registry.h"
+#include "sn32_registry.h"
 
 /**
  * @name    Platform identification macros
  * @{
  */
-#define PLATFORM_NAME           "SN32F240x"
+#define PLATFORM_NAME           "SN32F26x"
 /** @} */
 
 /*===========================================================================*/
@@ -78,7 +78,6 @@
 extern "C" {
 #endif
   void hal_lld_init(void);
-  void sn32_clock_init(void);
 #ifdef __cplusplus
 }
 #endif

@@ -22,7 +22,7 @@
  * @{
  */
 
-#include <SN32F240B.h>
+#include <SN32F2xx.h>
 #include <string.h>
 #include "hal.h"
 #include "usbhw.h"
@@ -32,7 +32,6 @@
 /*===========================================================================*/
 /* Driver local definitions.                                                 */
 /*===========================================================================*/
-#define SN32_USB_IRQ_VECTOR    Vector44
 #define SN32_USB_PMA_SIZE      256
 
 /*===========================================================================*/
@@ -82,7 +81,7 @@ static const USBEndpointConfig ep0config = {
     &ep0_state.in,
     &ep0_state.out
 };
-void rgb_matrix_toggle(void);
+
 void handleACK(USBDriver* usbp, usbep_t ep);
 void handleNAK(USBDriver* usbp, usbep_t ep);
 #if (USB_USE_WAIT == TRUE) || defined(__DOXYGEN__)
@@ -619,7 +618,7 @@ void handleNAK(USBDriver *usbp, usbep_t ep) {
  *
  * @isr
  */
-OSAL_IRQ_HANDLER(SN32_USB_IRQ_VECTOR) {
+OSAL_IRQ_HANDLER(SN32_USB_HANDLER) {
 
     OSAL_IRQ_PROLOGUE();
     usb_lld_serve_interrupt(&USBD1);

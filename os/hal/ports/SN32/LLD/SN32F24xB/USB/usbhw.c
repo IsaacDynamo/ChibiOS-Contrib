@@ -6,7 +6,7 @@
  * Version: V1.01
  * Date:    2017/07
  *------------------------------------------------------------------------------*/
-#include <SN32F240B.h>
+#include <SN32F2xx.h>
 #include "SN32F200_Def.h"
 
 #include "usbhw.h"

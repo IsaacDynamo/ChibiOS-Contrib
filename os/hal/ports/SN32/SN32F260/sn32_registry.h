@@ -25,8 +25,14 @@
 #ifndef SN32_REGISTRY_H
 #define SN32_REGISTRY_H
 
-#if !defined(SN32F26x) || defined(__DOXYGEN__)
-#define SN32F26x
+// There are some usage of SN32F24xx. 
+// - qmk_firmware/tmk_core/protocol/chibios/main.c
+// - qmk_firmware/tmk_core/common/chibios/suspend.c
+// - qmk_firmware/tmk_core/common/chibios/sleep_led.c
+// But it is not really clear what this does.
+// SN32F24x and SN32F24xB have this defines, so also define it here I guess
+#if !defined(SN32F24xx) || defined(__DOXYGEN__)
+#define SN32F24xx
 #endif
 
 /*===========================================================================*/
@@ -34,7 +40,7 @@
 /*===========================================================================*/
 
 /**
- * @name    SN32F24xx capabilities
+ * @name    SN32F26x capabilities
  * @{
  */
 

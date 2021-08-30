@@ -9,7 +9,11 @@ STARTUPINC = $(CHIBIOS)/os/common/portability/GCC \
              $(CHIBIOS)/os/common/startup/ARMCMx/compilers/GCC \
              $(CHIBIOS_CONTRIB)/os/common/startup/ARMCMx/devices/SN32F24x \
              $(CHIBIOS)/os/common/ext/ARM/CMSIS/Core/Include \
-             $(CHIBIOS_CONTRIB)/os/common/ext/SN/SN32F24x
+             $(CHIBIOS_CONTRIB)/os/common/ext/SN/SN32F24x \
+             $(CHIBIOS_CONTRIB)/os/common/ext/SN/SN32F2xx
+
+# Define SN32_SERIES
+OPT_DEFS += -DSN32_SERIES_SN32F24x
 
 STARTUPLD  = $(CHIBIOS_CONTRIB)/os/common/startup/ARMCMx/compilers/GCC/ld
 

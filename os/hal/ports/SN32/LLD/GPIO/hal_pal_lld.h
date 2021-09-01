@@ -55,7 +55,7 @@
 #define PAL_MODE_INPUT_PULLUP           0x0
 
 // The SN3224xB has pull-down support
-#if defined(SN32F24xB)
+#if defined(SN32_SERIES_SN32F24xB)
 #define PAL_MODE_INPUT_PULLDOWN         0x1
 #endif
 
@@ -64,7 +64,7 @@
 #define PAL_MODE_INPUT                  0x2
 
 // SN32F24x has repeater mode, while others have an unconnected mode.
-#if defined(SN32F24x)
+#if defined(SN32_SERIES_SN32F24x)
 #define PAL_MODE_INPUT_REPEATER         0x3
 #else
 #define PAL_MODE_UNCONNECTED            0x3
@@ -73,7 +73,7 @@
 #define PAL_MODE_OUTPUT_PUSHPULL        0x10
 
 // The SN32F24x and SN32F26x support an extra 20mA output mode
-#if defined(SN32F24x) || defined(SN32F26x)
+#if defined(SN32_SERIES_SN32F24x) || defined(SN32_SERIES_SN32F26x)
 #define PAL_MODE_OUTPUT_PUSHPULL_20MA   0x20  
 #endif
 

@@ -132,6 +132,85 @@
 #define PAL_NOLINE                      0U
 /** @} */
 
+// TODO: Remove sn32_gpio_setup_t and PALConfig when SN_* boards no longer define pal_default_config
+// NOTE: Removed config argument from palInit(), with chibios PAL_NEW_INIT define, because pal_default_config is most likly wrong anyway.
+// The pal_default_config in SN_* boards is initialized with:
+//
+// const PALConfig pal_default_config = {
+//   #if SN32_HAS_GPIOA
+//   {VAL_GPIOA_MODE},
+//   #endif
+//   #if SN32_HAS_GPIOB
+//   {VAL_GPIOB_MODE},
+//   #endif
+//   #if SN32_HAS_GPIOC
+//   {VAL_GPIOC_MODE},
+//   #endif
+//   #if SN32_HAS_GPIOD
+//   {VAL_GPIOD_MODE},
+//   #endif
+// };
+//
+// This way VAL_GPIOx_MODE is assigned to the first field of sn32_gpio_setup_t, which is data.
+// The data field was used to load GPIOx->DATA.
+// So the GPIOx->DATA register is loaded with a MODE config.
+//
+// The misconfiguration indicated that pal_default_config initialization was not critical and could be removed.
+
+/**
+ * @brief   GPIO port setup info.
+ */
+typedef struct {
+  /** Initial value for DATA register.*/
+  uint32_t              data;
+  /** Initial value for MODE register.*/
+  uint32_t              mode;
+  /** Initial value for CFG register.*/
+  uint32_t              cfg;
+  /** Initial value for IS register.*/
+  uint32_t              is;
+  /** Initial value for IBS register.*/
+  uint32_t              ibs;
+  /** Initial value for IEV register.*/
+  uint32_t              iev;
+  /** Initial value for IE register.*/
+  uint32_t              ie;
+  /** Initial value for RIS register.*/
+  uint32_t              ris;
+  /** Initial value for IC register.*/
+  uint32_t              ic;
+  /** Initial value for BSET register.*/
+  uint32_t              bset;
+  /** Initial value for BCLR register.*/
+  uint32_t              bclr;
+} sn32_gpio_setup_t;
+
+/**
+ * @brief   SN32 GPIO static initializer.
+ * @details An instance of this structure must be passed to @p palInit() at
+ *          system startup time in order to initialize the digital I/O
+ *          subsystem. This represents only the initial setup, specific pads
+ *          or whole ports can be reprogrammed at later time.
+ */
+typedef struct {
+#if SN32_HAS_GPIOA || defined(__DOXYGEN__)
+  /** @brief Port A setup data.*/
+  sn32_gpio_setup_t    PAData;
+#endif
+#if SN32_HAS_GPIOB || defined(__DOXYGEN__)
+  /** @brief Port B setup data.*/
+  sn32_gpio_setup_t    PBData;
+#endif
+#if SN32_HAS_GPIOC || defined(__DOXYGEN__)
+  /** @brief Port C setup data.*/
+  sn32_gpio_setup_t    PCData;
+#endif
+#if SN32_HAS_GPIOD || defined(__DOXYGEN__)
+  /** @brief Port D setup data.*/
+  sn32_gpio_setup_t    PDData;
+#endif
+} PALConfig;
+
 /**
  * @brief   Type of digital I/O port sized unsigned integer.
  */

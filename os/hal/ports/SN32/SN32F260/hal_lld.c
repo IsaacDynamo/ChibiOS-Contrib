@@ -49,6 +49,14 @@
 /* Driver exported functions.                                                */
 /*===========================================================================*/
 
+// TODO: sn32_clock_init() is called from __early_init(), but can be removed because it doesn't do anything useful.
+void sn32_clock_init(void) {
+    // NOTE: This is copied from SN32F240 and SN32F240B, but it doesn't do anything usefull.
+    // sn32_clock_init() is called from __early_init() and that is run before initialization of .bss.
+    // So any variable set by SystemCoreClockUpdate(), namely SystemCoreClock will be overwriten by the bss initialization.
+    SystemCoreClockUpdate();
+}
+
 /**
  * @brief   Low level HAL driver initialization.
  *

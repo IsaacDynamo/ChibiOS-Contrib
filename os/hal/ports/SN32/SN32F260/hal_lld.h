@@ -78,6 +78,7 @@
 extern "C" {
 #endif
   void hal_lld_init(void);
+  void sn32_clock_init(void);
 #ifdef __cplusplus
 }
 #endif

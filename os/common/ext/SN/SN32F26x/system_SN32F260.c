@@ -129,19 +129,6 @@ void SystemCoreClockUpdate (void)            /* Get Core Clock Frequency      */
 	}
 
 	SystemCoreClock /= AHB_prescaler;
-
-	//;;;;;;;;; Need for SN32F260 Begin
-	if (SystemCoreClock > 24000000)
-	{	
-		SN_FLASH->LPCTRL = 0x5AFA0005;
-	}
-	else	//SystemCoreClock <= 24000000
-	{
-		SN_FLASH->LPCTRL = 0x5AFA0000;
-	}
-	//;;;;;;;;; Need for SN32F260 End
-
-	//return;
 }
 
 /**

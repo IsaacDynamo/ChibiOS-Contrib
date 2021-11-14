@@ -52,21 +52,6 @@ void __early_init(void) {
   sn32_clock_init();
 }
 
-// void Reset_Handler(void) {
-//     setPinOutput(C4);
-//     setPinInputHigh(A0);
-//     if (readPin(A0) == 0) {
-//         asm ("mov %%sp, %0; bx %1;"
-//                 :
-//                 : "r"(0x200006C8), "r"(0x1fff0009)
-//                 : );
-//     }
-//     asm ("mov %%sp, %0; bx %1;"
-//             :
-//             : "r"(0x200006C8), "r"(0x7801)
-//             : );
-// }
-
 /**
  * @brief   Board-specific initialization code.
  */
